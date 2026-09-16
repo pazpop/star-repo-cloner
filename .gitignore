@@ -1,0 +1,5 @@
+# Dépôts téléchargés par le script — pas versionnés, se retéléchargent facilement
+download/
+
+# Python
+__pycache__/

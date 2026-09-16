@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160" role="img" aria-label="star-repo-cloner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="160" rx="14" fill="url(#bg)"/>
+  <rect x="1" y="1" width="638" height="158" rx="13" fill="none" stroke="#30363d" stroke-width="1"/>
+
+  <g transform="translate(46,44)">
+    <path d="M36 0 L44.5 24.5 L70 26 L50 42 L57 67 L36 53 L15 67 L22 42 L2 26 L27.5 24.5 Z"
+          fill="#e3b341" stroke="#8a6a1a" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+
+  <text x="140" y="72" font-family="Consolas, 'Courier New', monospace" font-size="34" font-weight="700" fill="#e6edf3">star-repo-cloner</text>
+  <text x="140" y="98" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#8b949e">Les dépôts GitHub les plus étoilés, filtrés par licence, clonés pour toi</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#6e7681">
+    <text x="140" y="126">⭐ tri par popularité</text>
+    <text x="280" y="126">⚖ filtre par licence</text>
+    <text x="420" y="126">⇩ clone superficiel</text>
+  </g>
+</svg>

@@ -107,11 +107,16 @@ def main():
     args = parser.parse_args()
 
     if shutil.which("git") is None:
-        print("Git n'est pas installé (ou pas dans le PATH). Voir la section Installation du README.", file=sys.stderr)
+        print(
+            "Erreur : Git n'est pas installé sur ton système.\n"
+            "Télécharge-le ici : https://git-scm.com/downloads\n"
+            "Puis relance ce script.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     if args.count < 1:
-        print(f"--count doit être un nombre positif (reçu : {args.count}).", file=sys.stderr)
+        print("--count doit être un nombre entier ≥ 1", file=sys.stderr)
         sys.exit(1)
 
     dest_dir = Path(args.dest)

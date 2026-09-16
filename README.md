@@ -103,6 +103,11 @@ Windows 11.
 - **La licence et le langage affichés par GitHub ne sont pas toujours
   fiables à 100 %** : GitHub les détecte automatiquement à partir des
   fichiers du projet — dans de rares cas, un projet peut être mal classé.
+- **Une faute de frappe dans `--language` ne donne aucune erreur.** Testé
+  empiriquement : GitHub ignore silencieusement une valeur de langage
+  inconnue (ex: `--language phyton` au lieu de `python`) et renvoie les
+  mêmes résultats que sans filtre du tout, sans avertissement. Vérifie
+  toujours l'orthographe du langage.
 
 ## Licence
 

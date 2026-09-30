@@ -34,13 +34,16 @@ def fetch_top_repos(license_spdx: str, language: str, min_stars: int, count: int
         query += f" language:{language}"
     results: list[dict] = []
     page = 1
+    # Taille de page fixe : GitHub calcule le décalage avec per_page, la changer
+    # d'une page à l'autre renverrait des dépôts déjà reçus.
+    per_page = min(100, count)
 
     while len(results) < count:
         params = {
             "q": query,
             "sort": "stars",
             "order": "desc",
-            "per_page": str(min(100, count - len(results))),
+            "per_page": str(per_page),
             "page": str(page),
         }
         url = GITHUB_API_URL + "?" + urllib.parse.urlencode(params)
@@ -64,7 +67,7 @@ def fetch_top_repos(license_spdx: str, language: str, min_stars: int, count: int
 
         results.extend(items)
         page += 1
-        if page > 10 or len(results) >= count:
+        if page * per_page > 1000 or len(results) >= count:  # l'API ne renvoie que 1000 résultats
             break
         time.sleep(1)
 
@@ -96,6 +99,9 @@ def clone_repo(repo: dict, dest_dir: Path) -> bool:
 
 
 def main():
+    # Émojis dans la console Windows (cp1252) même quand la sortie est redirigée.
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Télécharge les N dépôts GitHub les plus étoilés, filtrés par licence.")
     parser.add_argument("--license", default="mit", help="Licence SPDX : mit, apache-2.0, bsd-2-clause, bsd-3-clause, mpl-2.0, unlicense (défaut: mit)")
     parser.add_argument("--language", default="", help="Langage principal du code (ex: python, javascript, rust) — optionnel, aucun filtre par défaut")
